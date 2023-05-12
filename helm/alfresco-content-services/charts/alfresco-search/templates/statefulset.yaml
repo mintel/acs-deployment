@@ -1,7 +1,7 @@
-{{- if not .Values.persistence.useStatefulset -}}
-  # Defines the deployment for the Alfresco Search (Solr) App
+{{- if .Values.persistence.useStatefulset }}
+  # Defines the StatefulSet for the Alfresco Search (Solr) App
   apiVersion: apps/v1
-  kind: Deployment
+  kind: StatefulSet
   metadata:
     name: {{ template "alfresco-search.fullName" . }}-solr
     labels:
@@ -11,9 +11,8 @@
       heritage: {{ .Release.Service }}
       component: search
   spec:
-    replicas: 1
-    strategy:
-      type: Recreate
+    replicas: {{ .Values.persistence.statefulsetReplicas }}
+    serviceName: solr
     selector:
       matchLabels:
         app: {{ template "alfresco-search.fullName" . }}-solr
@@ -107,8 +106,13 @@
               mountPath: {{ .Values.persistence.search.data.mountPath }}
               subPath: {{ .Values.persistence.search.data.subPath }}
       {{- end }}
-        volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: "{{ .Values.persistence.existingClaim | default (printf "%s-solr-claim" (include "alfresco-search.fullName" .)) }}"
-{{- end -}}
+    volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+        - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: {{ .Values.persistence.VolumeSizeRequest }}
+{{- end }}
