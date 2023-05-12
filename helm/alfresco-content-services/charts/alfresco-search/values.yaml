@@ -66,6 +66,9 @@ persistence:
       subPath: "alfresco-content-services/solr-data"
   EbsPvConfiguration:
     fsType: ext4
+  # Deploy as StatefulSet rather than Deployment+PVC
+  useStatefulset: false
+  statefulsetReplicas: 2
 alfresco-insight-zeppelin:
   insightzeppelin:
     enabled: false
