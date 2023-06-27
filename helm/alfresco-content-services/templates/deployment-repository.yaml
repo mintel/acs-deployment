@@ -52,6 +52,9 @@ spec:
               name: {{ printf "%s-repository-jtoolopts" .Release.Name | quote }}
           {{- end }}
           - secretRef:
+              {{- if .Values.repository.adminPasswordSecret }}
+              name: {{ .Values.repository.adminPasswordSecret }}
+              {{- end }}
               {{- if .Values.database.existingSecret }}
               name: {{ .Values.database.existingSecret }}
               {{- else }}
