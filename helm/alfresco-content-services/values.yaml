@@ -10,10 +10,10 @@
 # Hence, setting up explicit Container memory and then assigning a percentage of it to the JVM for performance tuning.
 
 repository:
-  # -- Administrator password for ACS in md5 hash format
+  # -- Administrator password for ACS in md5 hash format (ntlm)
   adminPassword: "209c6174da490caeb422f3fa5a7ae634"
 
-  #-- Secret with key ADMIN_PASSWORD and value md5 hash encoding of password
+  #-- Secret with key ADMIN_PASSWORD and value md5 hash encoding of password (ntlm)
   adminPasswordSecret:
   # -- The name of the secret holding the ACS repository license if any (otherwise the image embeded license is used).
   # it must be contained within a `data['*.lic']` property

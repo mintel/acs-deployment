@@ -229,7 +229,7 @@ Please refer to the [documentation](https://github.com/Alfresco/acs-deployment/b
 | postgresql.postgresqlDatabase | string | `"alfresco"` | Postgresql database name |
 | postgresql.postgresqlPassword | string | `"alfresco"` | Postgresql database password |
 | postgresql.postgresqlUsername | string | `"alfresco"` | Postgresql database user |
-| repository.adminPassword | string | `"209c6174da490caeb422f3fa5a7ae634"` | Administrator password for ACS in md5 hash format |
+| repository.adminPassword | string | `"209c6174da490caeb422f3fa5a7ae634"` | Administrator password for ACS in md5 hash format (ntlm) |
 | repository.adminPasswordSecret | string | `nil` |  |
 | repository.command | list | `[]` |  |
 | repository.edition | string | `"Enterprise"` |  |
