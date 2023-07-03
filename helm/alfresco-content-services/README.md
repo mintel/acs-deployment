@@ -1,6 +1,6 @@
 # alfresco-content-services
 
-![Version: 5.3.0-M3-mintel.0.0.6](https://img.shields.io/badge/Version-5.3.0--M3--mintel.0.0.6-informational?style=flat-square)
+![Version: 5.3.0-M3-mintel.0.0.9](https://img.shields.io/badge/Version-5.3.0--M3--mintel.0.0.9-informational?style=flat-square)
 
 A Helm chart for deploying Alfresco Content Services
 
@@ -229,7 +229,8 @@ Please refer to the [documentation](https://github.com/Alfresco/acs-deployment/b
 | postgresql.postgresqlDatabase | string | `"alfresco"` | Postgresql database name |
 | postgresql.postgresqlPassword | string | `"alfresco"` | Postgresql database password |
 | postgresql.postgresqlUsername | string | `"alfresco"` | Postgresql database user |
-| repository.adminPassword | string | `"209c6174da490caeb422f3fa5a7ae634"` | Administrator password for ACS in md5 hash format |
+| repository.adminPassword | string | `"209c6174da490caeb422f3fa5a7ae634"` | Administrator password for ACS in md5 hash format (ntlm) |
+| repository.adminPasswordSecret | string | `nil` |  |
 | repository.command | list | `[]` |  |
 | repository.edition | string | `"Enterprise"` |  |
 | repository.environment.JAVA_OPTS | string | `"-Dtransform.service.enabled=true -XX:MinRAMPercentage=50 -XX:MaxRAMPercentage=80 -Dencryption.keystore.type=JCEKS -Dencryption.cipherAlgorithm=DESede/CBC/PKCS5Padding -Dencryption.keyAlgorithm=DESede -Dencryption.keystore.location=/usr/local/tomcat/shared/classes/alfresco/extension/keystore/keystore -Dmetadata-keystore.aliases=metadata -Dmetadata-keystore.metadata.algorithm=DESede"` |  |
