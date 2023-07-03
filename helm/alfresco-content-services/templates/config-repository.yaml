@@ -38,11 +38,6 @@ data:
       -Dshare.protocol={{ tpl (.Values.externalProtocol | default "http") $ }}
       -Dshare.host={{ tpl (.Values.externalHost | default (printf "%s-share" (include "content-services.shortname" .))) $ }}
       -Dshare.port={{ tpl (.Values.externalPort | default .Values.share.service.externalPort | toString) $ }}
-      {{- if .Values.repository.adminPasswordSecret }}
-      -Dalfresco_user_store.adminpassword=$ADMIN_PASSWORD
-      {{- else }}
-      -Dalfresco_user_store.adminpassword={{ .Values.repository.adminPassword | default "209c6174da490caeb422f3fa5a7ae634" }}
-      {{- end }}
       {{- if or (index .Values "alfresco-search" "enabled") (index .Values "alfresco-search" "external" "host") }}
       -Dindex.subsystem.name=solr6
       -Dsolr.base.url={{ template "alfresco-search.baseurl" . }}
@@ -137,6 +132,11 @@ data:
       {{- end }}
   CATALINA_OPTS: >-
       $ALFRESCO_OPTS
+      {{- if .Values.repository.adminPasswordSecret }}
+      -Dalfresco_user_store.adminpassword=$ADMIN_PASSWORD
+      {{- else }}
+      -Dalfresco_user_store.adminpassword={{ .Values.repository.adminPassword | default "209c6174da490caeb422f3fa5a7ae634" }}
+      {{- end }}
       -Ddb.driver={{ .Values.database.driver | default "org.postgresql.Driver" }}
       {{- if eq .Values.database.external false }}
       -Ddb.url=jdbc:postgresql://{{ printf "%s-%s" .Release.Name .Values.postgresql.nameOverride }}:{{ .Values.postgresql.service.port }}/{{ .Values.postgresql.postgresDatabase }}
