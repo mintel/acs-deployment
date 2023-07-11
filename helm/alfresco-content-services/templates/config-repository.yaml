@@ -23,6 +23,9 @@ data:
       {{- if .Values.repository.licenseSecret }}
       -Ddir.license.external=/usr/local/tomcat/shared/classes/alfresco/extension/license/
       {{- end }}
+      {{- if .Values.repository.rootDir }}
+      -Ddir.root={{ .Values.repository.rootDir }}
+      {{- end }}
       -Dalfresco.host={{ $alfhost }}
       -Dalfresco.protocol={{ $alfprotocol }}
       -Dalfresco.port={{ $alfport }}
@@ -150,6 +153,8 @@ data:
       {{- end }}
       -Ddb.username=$DATABASE_USERNAME
       -Ddb.password=$DATABASE_PASSWORD
+      -Ds3.dir.contentstore={{ .Values.s3connector.contentStoreDir | default "contentstore" }}
+      -Ds3.dir.contentstore.deleted={{ .Values.s3connector.contentStoreDeletedDir | default "contentstore.deleted" }}
       {{- if .Values.s3connector.enabled }}
       {{- if .Values.s3connector.existingSecret }}
       -Ds3.accessKey=$ACCESSKEY
