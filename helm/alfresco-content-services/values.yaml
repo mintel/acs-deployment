@@ -779,6 +779,8 @@ s3connector:
   #   secretKey:
   #   encryption:
   #   awsKmsKeyId:
+  # contentStoreDir: contentstore
+  # contentStoreDirDeleted: contentstore.deleted
 
 # -- For a full information of properties on the email configuration, please view: https://docs.alfresco.com/6.2/concepts/email.html
 email:
