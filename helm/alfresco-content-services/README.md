@@ -1,6 +1,6 @@
 # alfresco-content-services
 
-![Version: 5.3.0-M3-mintel.0.0.10](https://img.shields.io/badge/Version-5.3.0--M3--mintel.0.0.10-informational?style=flat-square)
+![Version: 5.3.0-M3-mintel.0.0.11](https://img.shields.io/badge/Version-5.3.0--M3--mintel.0.0.11-informational?style=flat-square)
 
 A Helm chart for deploying Alfresco Content Services
 
@@ -271,6 +271,7 @@ Please refer to the [documentation](https://github.com/Alfresco/acs-deployment/b
 | repository.replicaCount | int | `2` |  |
 | repository.resources.limits.memory | string | `"3000Mi"` |  |
 | repository.resources.requests.memory | string | `"3000Mi"` |  |
+| repository.rootDir | string | `nil` |  |
 | repository.securityContext | string | `nil` |  |
 | repository.service.externalPort | int | `80` |  |
 | repository.service.name | string | `"alfresco"` |  |

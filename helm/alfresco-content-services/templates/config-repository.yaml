@@ -23,6 +23,9 @@ data:
       {{- if .Values.repository.licenseSecret }}
       -Ddir.license.external=/usr/local/tomcat/shared/classes/alfresco/extension/license/
       {{- end }}
+      {{- if .Values.repository.rootDir }}
+      -Ddir.root={{ .Values.repository.rootDir }}
+      {{- end }}
       -Dalfresco.host={{ $alfhost }}
       -Dalfresco.protocol={{ $alfprotocol }}
       -Dalfresco.port={{ $alfport }}
